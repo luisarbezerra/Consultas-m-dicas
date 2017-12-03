@@ -112,16 +112,16 @@ public class GUICadastro extends JFrame {
 		contentPane.add(lblDataDeNascimento);
 		
 		JButton btnCancelar = new JButton("Cancelar");
-		btnCancelar.setBounds(125, 347, 89, 23);
+		btnCancelar.setBounds(111, 347, 103, 23);
 		contentPane.add(btnCancelar);
 		
-		JButton btnConfirmar = new JButton("Cadastrar");
-		btnConfirmar.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
+		JButton btnCadastrar = new JButton("Cadastrar");
+		btnCadastrar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
 			}
 		});
-		btnConfirmar.setBounds(224, 347, 89, 23);
-		contentPane.add(btnConfirmar);
+		btnCadastrar.setBounds(224, 347, 103, 23);
+		contentPane.add(btnCadastrar);
 	}
 
 }
