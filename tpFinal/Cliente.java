@@ -2,9 +2,9 @@ package tpFinal;
 
 public class Cliente {
 	
+	private int cpf;
 	private String nome;
 	private String identidade;
-	private int cpf;
 	private String endereco;
 	private String telefone;
 	private String dataNascimento;
@@ -45,6 +45,4 @@ public class Cliente {
 	public void setDataNascimento(String dataNascimento) {
 		this.dataNascimento = dataNascimento;
 	}
-	
-	
 }
