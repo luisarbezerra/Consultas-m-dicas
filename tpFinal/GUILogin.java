@@ -7,15 +7,21 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.SwingConstants;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import javax.swing.JTextField;
 import javax.swing.JButton;
 
 public class GUILogin extends JFrame {
 
 	private JPanel contentPane;
-	private JTextField textField;
+	private JTextField cpfTextField;
+	
+	private ListaClientes listaClientes = new ListaClientes();
 
 	/**
 	 * Launch the application.
@@ -55,17 +61,34 @@ public class GUILogin extends JFrame {
 		lblParaAgendarUma.setBounds(10, 57, 414, 14);
 		contentPane.add(lblParaAgendarUma);
 		
-		textField = new JTextField();
-		textField.setBounds(85, 123, 276, 29);
-		contentPane.add(textField);
-		textField.setColumns(10);
+		cpfTextField = new JTextField();
+		cpfTextField.setBounds(85, 123, 276, 29);
+		contentPane.add(cpfTextField);
+		cpfTextField.setColumns(10);
 		
 		JLabel lblCpf = new JLabel("CPF");
 		lblCpf.setBounds(85, 98, 518, 14);
 		contentPane.add(lblCpf);
 		
-		JButton btnNewButton = new JButton("Realizar agendamento");
-		btnNewButton.setBounds(117, 177, 209, 23);
-		contentPane.add(btnNewButton);
+		JButton btnRealizarAgendamento = new JButton("Realizar agendamento");
+		btnRealizarAgendamento.setBounds(117, 177, 209, 23);
+		btnRealizarAgendamento.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				try {
+					String cpf = cpfTextField.getText();
+					if(listaClientes.encontraCliente(cpf)) {
+						GUIAtendimento frame = new GUIAtendimento();
+						frame.setVisible(true);
+					} else {
+						GUICadastro frame = new GUICadastro(listaClientes);
+						frame.setVisible(true);
+					}
+				} catch (Exception error) {
+					JOptionPane.showMessageDialog(null, "Verifique se os dados foram preenchidos corretamente!");
+					System.out.println(error);
+				}
+			}
+		});
+		contentPane.add(btnRealizarAgendamento);
 	}
 }
