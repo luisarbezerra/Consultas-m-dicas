@@ -1,7 +1,7 @@
 package tpFinal;
 
 public class Cliente {
-//teste	
+	
 	private String cpf;
 	private String nome;
 	private String identidade;
